@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  services:
+  pihole:
+    image: pihole/pihole
+    container_name: pihole
+    hostname: pihole
+    restart: unless-stopped
+    networks:
+      - internal
+      - external
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./pihole/pihole:/etc/pihole
+      - ./pihole/dnsmasq.d:/etc/dnsmasq.d
+    environment:
+      - ServerIP=192.168.1.1
+      - ServerIPv6=2001:db8::1
+      - PROXY_LOCATION=pihole
+      - VIRTUAL_HOST=pihole.domain.name
+      - VIRTUAL_PORT=80
+      - WEBPASSWORD=<unique password here>
+      - TZ=UTC
+    labels:
+      - traefik.backend=pihole
+      - traefik.frontend.rule=Host:pihole.domain.name
+      - traefik.port=80
+      - traefik.docker.network=proxy
+      - traefik.enable=true
+
+  dns-over-https:
+    image: goofball222/dns-over-https
+    container_name: dns-over-https
+    restart: unless-stopped
+    networks:
+      - internal
+      - external
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./pihole/dohconf:/opt/dns-over-https/conf
+    environment:
+      - TZ=UTC
+    labels:
+      - traefik.backend=securedns
+      - traefik.frontend.rule=Host:securedns.domain.name
+      - traefik.port=8053
+      - traefik.docker.network=proxy
+      - traefik.enable=true
+ 
+  dns-over-tls:
+    image: goofball222/stunnel
+    container_name: dns-over-tls
+    restart: unless-stopped
+    networks:
+      - internal
+      - external
+    ports:
+      - 853:853/tcp
+      - 853:853/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./cert/privkey.pem:/etc/stunnel/stunnel.key:ro
+      - ./cert/fullchain.pem:/etc/stunnel/stunnel.pem:ro
+      # Copies of valid LetsEncrypt certificate and key for "securedns.domain.name"
+    environment:
+      - STUNNEL_ACCEPT=853
+      - STUNNEL_CONNECT=pihole:53
+      - STUNNEL_DEBUG=5
+      - STUNNEL_SERVICE=dns-over-tls
+
+networks:
+  external:
+    external:
+      name: proxy
+  internal:
+    driver: bridge
+    internal: true
