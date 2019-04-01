@@ -4,6 +4,10 @@ listen = [
     "[::1]:8053",
 ]
 
+# Local address and port for upstream DNS
+# If left empty, a local address is automatically chosen.
+local_addr = ""
+
 # TLS certification file
 # If left empty, plain-text HTTP will be used.
 # You are recommended to leave empty and to use a server load balancer (e.g.
@@ -38,3 +42,7 @@ tcp_only = false
 
 # Enable logging
 verbose = false
+
+# Enable log IP from HTTPS-reverse proxy header: X-Forwarded-For or X-Real-IP
+# Note: http uri/useragent log cannot be controlled by this config
+log_guessed_client_ip = false
