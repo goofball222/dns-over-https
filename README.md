@@ -16,7 +16,7 @@
 
 ## Description
 
-DNS-over-HTTPS container built on Alpine Linux. Recommended to run behind Trafik or other proxy.
+DNS-over-HTTPS container built on Alpine Linux. Recommended to run behind Traefik or other proxy.
 
 ---
 
