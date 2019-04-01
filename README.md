@@ -36,8 +36,7 @@ services:
     container_name: dns-over-https
     restart: unless-stopped
     networks:
-      - internal
-      - external
+      external:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./dohconf/:/opt/dns-over-https/conf/
@@ -49,6 +48,11 @@ services:
       - traefik.port=8053
       - traefik.docker.network=proxy
       - traefik.enable=true
+
+networks:
+  external:
+    external:
+      name: proxy
 
 ```
 
@@ -65,6 +69,8 @@ services:
     image: goofball222/dns-over-https
     container_name: dns-over-https
     restart: unless-stopped
+    networks:
+      external:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./dohconf/:/opt/dns-over-https/conf/
@@ -77,6 +83,11 @@ services:
       - traefik.docker.network=proxy
       - traefik.enable=true
     command: ["doh-client"]
+
+networks:
+  external:
+    external:
+      name: proxy
 
 ```
 
@@ -126,10 +137,9 @@ services:
       - traefik.enable=true
 
 networks:
-  proxy:
+  external:
     external:
       name: proxy
-
 
 ```
 
