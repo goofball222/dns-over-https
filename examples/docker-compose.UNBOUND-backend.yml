@@ -34,7 +34,7 @@ services:
       - traefik.backend=dns-over-https
       - traefik.frontend.rule=Host:securedns.domain.name
       - traefik.port=8053
-      - traefik.docker.network=traefik_proxy
+      - traefik.docker.network=proxy
       - traefik.enable=true
 
 
