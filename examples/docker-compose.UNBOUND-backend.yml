@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  unbound:
+    image: mvance/unbound
+    container_name: unbound
+    restart: unless-stopped
+    networks:
+      external:
+    ports:
+      - 853:853/tcp
+      - 853:853/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
+      - ./unbound:/opt/unbound/etc/unbound
+      - /etc/letsencrypt/live/securedns.domain.name/fullchain.pem:/etc/ssl/certs/cert.pem:ro
+      - /etc/letsencrypt/live/securedns.domain.name/privkey.pem:/etc/ssl/certs/key.pem:ro
+    environment:
+      - TZ=UTC
+
+  dns-over-https:
+    image: goofball222/dns-over-https
+    container_name: dns-over-https
+    restart: unless-stopped
+    networks:
+      external:
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./dns-over-https:/opt/dns-over-https/conf
+    environment:
+      - TZ=UTC
+    labels:
+      - traefik.backend=dns-over-https
+      - traefik.frontend.rule=Host:securedns.domain.name
+      - traefik.port=8053
+      - traefik.docker.network=traefik_proxy
+      - traefik.enable=true
+
+
+networks:
+  external:
+    external:
+      name: proxy
