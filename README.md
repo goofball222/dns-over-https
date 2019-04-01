@@ -146,6 +146,7 @@ networks:
 **DNS-over-HTTPS configuration examples:**
 
 [DNS-over-HTTPS server example config](https://github.com/goofball222/dns-over-https/blob/master/examples/doh-server.conf)
+
 [DNS-over-HTTPS client example config](https://github.com/goofball222/dns-over-https/blob/master/examples/doh-client.conf)
 
 [//]: # (Licensed under the Apache 2.0 license)
