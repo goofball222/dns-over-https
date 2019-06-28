@@ -18,7 +18,7 @@ LABEL \
 ENV \
     DEBUG=false \
     GOPATH="/go" \
-    GOCACHE=off \
+    GOCACHE="/tmp/gocache" \
     PGID=999 \
     PUID=999
 
