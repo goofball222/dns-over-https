@@ -1,3 +1,8 @@
+* **2019-10-01**
+    * Bump version to v2.1.2
+    * Update doh-client.conf.default and doh-server.conf.default to latest from v2.1.2
+    * Update configuration examples for v2.1.2 changes
+---
 * **2019-06-28**
     * Fix GOCACHE=off deprecation introduced with Go 1.12 in updated alpine base
 ---

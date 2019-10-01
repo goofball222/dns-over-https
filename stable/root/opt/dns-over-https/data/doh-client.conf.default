@@ -4,6 +4,9 @@ listen = [
     "127.0.0.1:5380",
     "[::1]:53",
     "[::1]:5380",
+
+    ## To listen on both 0.0.0.0:53 and [::]:53, use the following line
+    # ":53",
 ]
 
 # HTTP path for upstream resolver
@@ -15,34 +18,34 @@ upstream_selector = "random"
 
 # weight should in (0, 100], if upstream_selector is random, weight will be ignored
 
-## Google's productive resolver, good ECS, bad DNSSEC
-#[[upstream.upstream_google]]
-#    url = "https://dns.google.com/resolve"
+## Google's resolver, good ECS, good DNSSEC
+#[[upstream.upstream_ietf]]
+#    url = "https://dns.google/dns-query"
 #    weight = 50
 
 ## CloudFlare's resolver, bad ECS, good DNSSEC
-#[[upstream.upstream_google]]
-#    url = "https://cloudflare-dns.com/dns-query"
-#    weight = 50
-
-## CloudFlare's resolver, bad ECS, good DNSSEC
-#[[upstream.upstream_google]]
-#    url = "https://1.1.1.1/dns-query"
-#    weight = 50
-
-# CloudFlare's resolver, bad ECS, good DNSSEC
+## ECS is disabled for privacy by design: https://developers.cloudflare.com/1.1.1.1/nitty-gritty-details/#edns-client-subnet
 [[upstream.upstream_ietf]]
     url = "https://cloudflare-dns.com/dns-query"
     weight = 50
 
 ## CloudFlare's resolver, bad ECS, good DNSSEC
+## ECS is disabled for privacy by design: https://developers.cloudflare.com/1.1.1.1/nitty-gritty-details/#edns-client-subnet
+## Note that some ISPs have problems connecting to 1.1.1.1, try 1.0.0.1 if problems happen.
 #[[upstream.upstream_ietf]]
 #    url = "https://1.1.1.1/dns-query"
 #    weight = 50
 
-## Google's experimental resolver, good ECS, good DNSSEC
+## DNS.SB's resolver, good ECS, good DNSSEC
+## The provider claims no logging: https://dns.sb/doh/
 #[[upstream.upstream_ietf]]
-#    url = "https://dns.google.com/experimental"
+#    url = "https://doh.dns.sb/dns-query"
+#    weight = 50
+
+## Quad9's resolver, bad ECS, good DNSSEC
+## ECS is disabled for privacy by design: https://www.quad9.net/faq/#What_is_EDNS_Client-Subnet
+#[[upstream.upstream_ietf]]
+#    url = "https://9.9.9.9/dns-query"
 #    weight = 50
 
 ## CloudFlare's resolver for Tor, available only with Tor
@@ -115,6 +118,17 @@ no_ecs = false
 # with an IPv4-only environment.
 # Note that DNS listening and bootstrapping is not controlled by this option.
 no_ipv6 = false
+
+# Disable submitting User-Agent
+#
+# It is generally not recommended to disable submitting User-Agent because it
+# is still possible to probe client version according to behavior differences,
+# such as TLS handshaking, handling of malformed packets, and specific bugs.
+# Additionally, User-Agent is an important way for the server to distinguish
+# buggy, old, or insecure clients, and to workaround specific bugs.
+# (e.g. doh-server can detect and workaround certain issues of DNSCrypt-Proxy
+# and older Firefox.)
+no_user_agent = false
 
 # Enable logging
 verbose = false
