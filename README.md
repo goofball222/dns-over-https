@@ -5,7 +5,7 @@
 ## Docker tags:
 | Tag | dns-over-https Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/dns-over-https/blob/master/stable/Dockerfile) | 2.1.2 | Latest stable release | 2019-10-01 |
+| [latest](https://github.com/goofball222/dns-over-https/blob/master/stable/Dockerfile) | 2.2.1 | Latest stable release | 2020-04-02 |
 
 ---
 
