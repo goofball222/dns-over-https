@@ -1,3 +1,6 @@
+* **2020-08-20**
+    * Bump version to v2.2.2
+---
 * **2020-04-02**
     * Bump version to v2.2.1
     * Update doh-client.conf.default and doh-server.conf.default to latest from v2.2.1
