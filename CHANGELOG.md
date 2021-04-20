@@ -1,3 +1,6 @@
+* **2021-04-19**
+    * Bump version to v2.2.6
+---
 * **2020-08-20**
     * Bump version to v2.2.2
 ---

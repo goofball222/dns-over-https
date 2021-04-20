@@ -5,11 +5,11 @@
 ## Docker tags:
 | Tag | dns-over-https Version | Description | Release Date |
 | --- | :---: | --- | :---: |
-| [latest](https://github.com/goofball222/dns-over-https/blob/master/stable/Dockerfile) | 2.2.2 | Latest stable release | 2020-08-20 |
+| [latest](https://github.com/goofball222/dns-over-https/blob/main/stable/Dockerfile) | 2.2.6 | Latest stable release | 2021-04-19 |
 
 ---
 
-* [Recent changes, see: GitHub CHANGELOG.md](https://github.com/goofball222/dns-over-https/blob/master/CHANGELOG.md)
+* [Recent changes, see: GitHub CHANGELOG.md](https://github.com/goofball222/dns-over-https/blob/main/CHANGELOG.md)
 * [Report any bugs, issues or feature requests on GitHub](https://github.com/goofball222/dns-over-https/issues)
 
 ---
@@ -155,9 +155,9 @@ networks:
 
 **DNS-over-HTTPS configuration examples:**
 
-[DNS-over-HTTPS server example config](https://github.com/goofball222/dns-over-https/blob/master/examples/doh-server.conf)
+[DNS-over-HTTPS server example config](https://github.com/goofball222/dns-over-https/blob/main/examples/doh-server.conf)
 
-[DNS-over-HTTPS client example config](https://github.com/goofball222/dns-over-https/blob/master/examples/doh-client.conf)
+[DNS-over-HTTPS client example config](https://github.com/goofball222/dns-over-https/blob/main/examples/doh-client.conf)
 
 [//]: # (Licensed under the Apache 2.0 license)
 [//]: # (Copyright 2018 The Goofball - goofball222@gmail.com)
