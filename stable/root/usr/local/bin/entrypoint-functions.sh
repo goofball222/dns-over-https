@@ -3,8 +3,8 @@
 # entrypoint-functions.sh script for UniFi Docker container
 # License: Apache-2.0
 # Github: https://github.com/goofball222/dns-over-https
-ENTRYPOINT_FUNCTIONS_VERSION="1.0.0"
-# Last updated date: 2018-11-12
+ENTRYPOINT_FUNCTIONS_VERSION="1.1.0"
+# Last updated date: 2021-06-21
 
 f_confchk() {
     cp ${DATADIR}/doh-client.conf.default ${CONFDIR}/doh-client.conf.default
@@ -41,6 +41,5 @@ f_giduid() {
 }
 
 f_log() {
-    echo "$(date +"[%Y-%m-%d %T,%3N]") <docker-entrypoint> $*"
+    echo "$(date -u +%FT$(nmeter -d0 '%3t' | head -n1)) <docker-entrypoint> $*"
 }
-

@@ -1,5 +1,8 @@
 * **2021-06-21**
     * Switch to GitHub actions for builds
+    * Fix issue with logging time
+    * Stop checking for su-exec, fixes issue with Ubuntu Docker host, possibly others.
+    * Remove unneeded packages from build-deps
 ---
 * **2021-04-19**
     * Bump version to v2.2.6

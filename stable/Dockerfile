@@ -32,7 +32,7 @@ RUN \
     && addgroup -g $PGID doh \
     && adduser -D -G doh -u $PUID doh \
     && apk add -q --no-cache --virtual .build-deps \
-       gcc git go make musl-dev \
+       git go make \
     && apk add -q --no-cache \
         bash ca-certificates shadow su-exec tzdata \
     && bash -c 'mkdir -p {conf,data,src}' \
