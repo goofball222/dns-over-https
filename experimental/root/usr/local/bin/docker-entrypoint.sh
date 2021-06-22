@@ -3,7 +3,7 @@
 # Init script for DNS over HTTPS proxy Docker container
 # License: Apache-2.0
 # Github: https://github.com/goofball222/dns-over-https.git
-SCRIPT_VERSION="1.1.0"
+SCRIPT_VERSION="1.2.0"
 # Last updated date: 2021-06-21
 
 set -Eeuo pipefail
@@ -54,15 +54,11 @@ if [ "$(id -u)" = '0' ]; then
     if [[ "${@}" =~ 'doh-' ]]; then
         f_confchk
         f_giduid
-        if [ -x "$(command -v su-exec)" ]; then
-            f_log "INFO - Use su-exec to drop privileges and start process as GID=${PGID}, UID=${PUID}"
-            f_log "EXEC - su-exec doh:doh ${@} -conf ${CONFFILE}"
-            exec su-exec doh:doh ${@} -conf ${CONFFILE} &
-            f_idle_handler
-        else
-            f_log "ERROR - su-exec NOT FOUND. Run state is invalid. Exiting."
-            exit 1;
-        fi
+
+        f_log "INFO - Use su-exec to drop privileges and start process as GID=${PGID}, UID=${PUID}"
+        f_log "EXEC - su-exec doh:doh ${@} -conf ${CONFFILE}"
+        exec su-exec doh:doh ${@} -conf ${CONFFILE} &
+        f_idle_handler
     else
         f_log "EXEC - ${@} as UID 0 (root)"
         exec "${@}"

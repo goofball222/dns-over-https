@@ -32,9 +32,9 @@ RUN \
     && addgroup -g $PGID doh \
     && adduser -D -G doh -u $PUID doh \
     && apk add -q --no-cache --virtual .build-deps \
-       gcc git go make musl-dev \
+       git go make \
     && apk add -q --no-cache \
-        bash binutils ca-certificates shadow su-exec tzdata \
+        bash ca-certificates shadow su-exec tzdata \
     && bash -c 'mkdir -p {conf,data,src}' \
     && git clone https://github.com/m13253/dns-over-https.git /opt/dns-over-https/src \
     && cd /opt/dns-over-https/src/doh-client \
