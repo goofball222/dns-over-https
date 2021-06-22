@@ -5,15 +5,15 @@ ARG VCS_REF
 ARG VERSION
 
 LABEL \
-    org.label-schema.vendor="The Goofball - goofball222@gmail.com" \
-    org.label-schema.url="https://github.com/goofball222/dns-over-https" \
-    org.label-schema.name="DNS over HTTPS Server/Client" \
-    org.label-schema.version=$VERSION \
-    org.label-schema.vcs-url="https://github.com/goofball222/dns-over-https.git" \
-    org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.build-date=$BUILD_DATE \
-    org.label-schema.license="Apache-2.0" \
-    org.label-schema.schema-version="1.0"
+    org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
+    org.opencontainers.image.url="https://github.com/goofball222/dns-over-https" \
+    org.opencontainers.image.title="DNS over HTTPS Server/Client" \
+    org.opencontainers.image.description="DNS over HTTPS Server/Client" \
+    org.opencontainers.image.version=$VERSION \
+    org.opencontainers.image.source="https://github.com/goofball222/dns-over-https" \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.created=$BUILD_DATE \
+    org.opencontainers.image.licenses="Apache-2.0"
 
 ENV \
     DEBUG=false \

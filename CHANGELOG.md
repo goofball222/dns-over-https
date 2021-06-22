@@ -1,3 +1,6 @@
+* **2021-06-21**
+    * Switch to GitHub actions for builds
+---
 * **2021-04-19**
     * Bump version to v2.2.6
 ---
