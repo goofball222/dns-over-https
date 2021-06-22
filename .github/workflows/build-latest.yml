@@ -29,7 +29,6 @@ jobs:
             ghcr.io/${{ github.repository }}
           tags: |
             type=raw,latest
-            type=raw,${{ steps.getargs.outputs.version }}
           labels: |
             org.opencontainers.image.vendor=The Goofball - goofball222@gmail.com
             org.opencontainers.image.title=DNS over HTTPS Server/Client
