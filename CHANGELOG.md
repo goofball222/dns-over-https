@@ -1,3 +1,8 @@
+* **2023-09-22**
+    * Bump version to v2.3.3
+    * Update github actions
+    * Enable dependabot
+---
 * **2021-06-21**
     * Switch to GitHub actions for builds
     * Fix issue with logging time
