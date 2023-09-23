@@ -1,6 +1,6 @@
 # DNS-over-HTTPS Docker Container
 
-[![Latest Build Status](https://github.com/goofball222/dns-over-https/actions/workflows/build-latest.yml/badge.svg)](https://github.com/goofball222/dns-over-https/actions/workflows/build-latest.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/dns-over-https.svg)](https://hub.docker.com/r/goofball222/dns-over-https/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/dns-over-https.svg)](https://hub.docker.com/r/goofball222/dns-over-https/) [![MB License](https://images.microbadger.com/badges/license/goofball222/dns-over-https.svg)](https://microbadger.com/images/goofball222/dns-over-https)
+[![Latest Build Status](https://github.com/goofball222/dns-over-https/actions/workflows/build-latest.yml/badge.svg)](https://github.com/goofball222/dns-over-https/actions/workflows/build-latest.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/dns-over-https.svg)](https://hub.docker.com/r/goofball222/dns-over-https/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/dns-over-https.svg)](https://hub.docker.com/r/goofball222/dns-over-https/) [![License](https://img.shields.io/github/license/goofball222/dns-over-https.svg)](https://github.com/goofball222/dns-over-https)
 
 ## Docker tags:
 | Tag | dns-over-https Version | Description | Release Date |
